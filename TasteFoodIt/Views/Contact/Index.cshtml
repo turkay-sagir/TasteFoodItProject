@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_DetailLayout.cshtml";
+}
+
+<section class="ftco-section contact-section bg-light">
+    <div class="container">
+        <div class="row d-flex contact-info">
+            <div class="col-md-12">
+                <h2 class="h4 font-weight-bold">İletişim Bilgileri</h2>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-3 d-flex">
+                <div class="dbox">
+                    <p><span>Adres:</span> @ViewBag.Address</p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="dbox">
+                    <p><span>Telefon:</span> @ViewBag.Phone</p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="dbox">
+                    <p><span>Email:</span> <a href="mailto:info@yoursite.com"> @ViewBag.Email</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="dbox">
+                    <p><span>Website:</span> <a href="#"> @ViewBag.Website</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section ftco-no-pt contact-section">
+    <div class="container">
+        <div class="row d-flex align-items-stretch no-gutters">
+            <div class="col-md-6 p-5 order-md-last">
+                <h2 class="h4 mb-5 font-weight-bold">Mesaj Gönder</h2>
+                @using (Html.BeginForm("SendMessage", "Contact", FormMethod.Post, new {enctype="multipart/form-data"}))
+                {
+                <form>
+                    <div class="form-group">
+                        <input type="text" name="NameSurname" class="form-control" placeholder="İsim Soyisim">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="Email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="Subject" class="form-control" placeholder="Konu">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="Message" cols="30" rows="7" class="form-control" placeholder="Mesaj"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Gönder" class="btn btn-primary">
+                    </div>
+                </form>
+                }
+            </div>
+            <div class="col-md-6 d-flex align-items-stretch">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</section>
+

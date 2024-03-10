@@ -1,0 +1,77 @@
+﻿@model List<TasteFoodIt.Entities.Product>
+
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Ürün Listesi</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Ana Sayfa</a></li>
+            <li class="breadcrumb-item">Ürünler</li>
+            <li class="breadcrumb-item active" aria-current="page">Ürün İşlemleri</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <!-- Simple Tables -->
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Id</th>
+                                <th>Ürün Adı</th>
+                                <th>Ürün Kategorisi</th>
+                                <th>Fiyat</th>
+                                <th>Durum</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+
+                                string state = "";
+                                string value = "";
+
+                                if (item.IsActive == true)
+                                {
+                                    state = "bg-success";
+                                    value = "Aktif";
+                                }
+
+                                else
+                                {
+                                    state = "bg-danger";
+                                    value = "Pasif";
+                                }
+
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Category.CategoryName</td>
+                                    <td>@item.Price</td>
+                                    <td><a href="/Product/ProductStatusChange/@item.ProductId"><span class="badge @state" style="color:lemonchiffon;font-size:initial">@value</span></a></td>
+                                    <td>@Html.ActionLink("Sil", "DeleteProduct", new { id = item.ProductId }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstediğinizden Emin Misiniz?')" })</td>
+                                    <td><a href="/Product/UpdateProduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="/Product/CreateProduct" class="btn btn-primary">Yeni Ürün Girişi</a>
+
+</div>
+

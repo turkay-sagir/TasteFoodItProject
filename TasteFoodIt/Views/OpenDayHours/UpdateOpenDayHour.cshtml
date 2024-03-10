@@ -1,0 +1,43 @@
+﻿@model TasteFoodIt.Entities.OpenDayHour 
+@{
+    ViewBag.Title = "UpdateOpenDayHour";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Çalışma Saati Güncelleme Sayfası</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Ana Sayfa</a></li>
+            <li class="breadcrumb-item">Çalışma Saati</li>
+            <li class="breadcrumb-item active" aria-current="page">Çalışma Saati İşlemleri</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Form Basic -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    @using (Html.BeginForm("UpdateOpenDayHour", "OpenDayHours", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <form>
+                            @Html.HiddenFor(x=>x.OpenDayHourId)
+                            <div class="form-group">
+                                <label>Çalışma Günü</label>
+                                @Html.DropDownList("DayName", (List<SelectListItem>)ViewBag.AllDays, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>Çalışma Saati Aralığı</label>
+                                @Html.TextBoxFor(x => x.OpenHourRange, new { @class = "form-control" })
+                                <small>8:00 - 24:00 formatında giriniz!</small>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Çalışma Saati Güncelle</button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

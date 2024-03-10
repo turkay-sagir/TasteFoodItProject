@@ -1,0 +1,39 @@
+﻿@model TasteFoodIt.Entities.Category
+
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Kategori Güncelleme Sayfası</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Ana Sayfa</a></li>
+            <li class="breadcrumb-item">Kategoriler</li>
+            <li class="breadcrumb-item active" aria-current="page">Kategori İşlemleri</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Form Basic -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    @using (Html.BeginForm("UpdateCategory", "Category", FormMethod.Post, new { enctype = "form-data/multipart" }))
+                    {
+                        <form>
+                            @Html.HiddenFor(x => x.CategoryId)
+                            <div class="form-group">
+                                <label>Kategori Adı</label>
+                                @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+                            </div>
+                            <button type="submit" class="btn btn-primary">Kategoriyi Güncelle</button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

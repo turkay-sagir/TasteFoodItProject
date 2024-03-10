@@ -1,0 +1,46 @@
+﻿@model TasteFoodIt.Entities.Contact
+@{
+    ViewBag.Title = "ReadMessage";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Mesaj Detayı</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <!-- Simple Tables -->
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>İsim Soyisim:</th>
+                                <td>@Model.NameSurname</td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td>@Model.Email</td>
+                            </tr>
+                            <tr>
+                                <th>Konu:</th>
+                                <td>@Model.Subject</td>
+                            </tr>
+                            <tr>
+                                <th>Tarih:</th>
+                                <td>@(((DateTime)Model.SendDate).ToString("d"))</td>
+                            </tr>
+                            <tr>
+                                <th>Mesaj:</th>
+                                <td>@Model.Message</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/Contact/MessageList" class="btn btn-info">Mesajlar Sayfasına Git</a>
+</div>

@@ -1,0 +1,67 @@
+﻿@model List<TasteFoodIt.Entities.Notification>
+@{
+    ViewBag.Title = "NotificationList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Bildirim Listesi</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Ana Sayfa</a></li>
+            <li class="breadcrumb-item">Bildirimler</li>
+            <li class="breadcrumb-item active" aria-current="page">Bildirim İşlemleri</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <!-- Simple Tables -->
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Id</th>
+                                <th>Bildirim İçeriği</th>
+                                <th>Okunma Durumu</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                string state = "";
+                                string value = "";
+                                if(item.IsRead==true)
+                                {
+                                    state = "btn-dark";
+                                    value = "Okunmadı Olarak İşaretle";
+                                }
+
+                                else
+                                {
+                                    state = "btn-warning";
+                                    value = "Okundu Olarak İşaretle";
+                                }
+
+                                <tr>
+                                    <td>@item.NotificationId</td>
+                                    <td>@item.Description</td>
+                                    <td><a href="/Notification/StatusChangeNotification/@item.NotificationId" class="btn @state">@value</a></td>
+                                    <td><a href="/Category/DeleteCategory/@item.NotificationId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Category/UpdateCategory/@item.NotificationId" class="btn btn-success">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+    </div>
+    <a href="/Notification/CreateNotification" class="btn btn-primary">Yeni Bildirim Girişi</a>
+</div>
+

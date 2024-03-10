@@ -1,0 +1,76 @@
+﻿@model List<TasteFoodIt.Entities.Reservation>
+@{
+    ViewBag.Title = "ReservationList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Rezervasyon Listesi</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Ana Sayfa</a></li>
+            <li class="breadcrumb-item">Rezervasyon</li>
+            <li class="breadcrumb-item active" aria-current="page">Rezervasyon İşlemleri</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <!-- Simple Tables -->
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Id</th>
+                                <th>Adı Soyadı</th>
+                                <th>Email</th>
+                                <th>Telefon</th>
+                                <th>Rezervasyon Tarihi</th>
+                                <th>Saat</th>
+                                <th>Misafir Sayısı</th>
+                                <th>Rezervasyon Durumu</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                string state = "";
+                                string value = "";
+
+                                if(item.ReservationStatus=="Boş")
+                                {
+                                    state = "bg-dark";
+                                    value = "Boş";
+                                }
+                                else
+                                {
+                                    state = "bg-warning";
+                                    value = "Dolu";
+                                }
+
+                                <tr>
+                                    <td>@item.ReservationId</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Phone</td>
+                                    <td>@(((DateTime)item.ReservationDate).ToString("d"))</td>
+                                    <td>@item.Time</td>
+                                    <td>@item.GuestCount</td>
+                                    <td><a href="/Reservation/ReservationStatusChange/@item.ReservationId"><span class="badge @state" style="color:lemonchiffon;font-size:initial">@value</span></a></td>
+                                    <td>@Html.ActionLink("Sil", "DeleteReservation", new { id = item.ReservationId }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstediğinizden Emin Misiniz?')" })</td>
+                                    <td><a href="/Reservation/UpdateReservation/@item.ReservationId" class="btn btn-success">Güncelle</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

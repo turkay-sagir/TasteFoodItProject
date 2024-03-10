@@ -1,0 +1,57 @@
+﻿@model List<TasteFoodIt.Entities.Chef>
+@{
+    ViewBag.Title = "ChefList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Şefler Listesi</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Ana Sayfa</a></li>
+            <li class="breadcrumb-item">Şefler</li>
+            <li class="breadcrumb-item active" aria-current="page">Şef İşlemleri</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <!-- Simple Tables -->
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Id</th>
+                                <th>Adı Soyadı</th>
+                                <th>Ünvan</th>
+                                <th>Description</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ChefId</td>
+                                    <td>@item.NameSurname</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td>@Html.ActionLink("Sil", "DeleteChef", new { id = item.ChefId }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstediğinizden Emin Misiniz?')" })</td>
+                                    <td><a href="/Chef/UpdateChef/@item.ChefId" class="btn btn-success">Güncelle</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/Chef/CreateChef" class="btn btn-primary">Yeni Şef Girişi</a>
+
+
+</div>
+
