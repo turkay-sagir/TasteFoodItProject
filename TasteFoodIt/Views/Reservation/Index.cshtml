@@ -7,9 +7,7 @@
     <div class="container" style="margin-top:20px;margin-bottom:20px">
         <div class="row no-gutters">
             <div class="col-sm-12 p-4 p-md-5 d-flex align-items-center justify-content-center bg-primary">
-
-                @using (Html.BeginForm("CreateReservation", "Reservation", FormMethod.Post, new { enctype = "multipart/form-data", @class = "appointment-form" }))
-                {
+                <form id="reservationForm" class="appointment-form">
                     <h3 class="mb-3">Masanızı Ayırtın</h3>
                     <div class="row justify-content-center">
                         <div class="col-md-4">
@@ -24,7 +22,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" name="Phone" class="form-control" placeholder="05XX XXX XX XX" pattern="05\d{9}" title="Telefon numarası 05 başlayarak boşluk olmadan ve 11 haneli olarak yazın">
+                                <input type="text" name="Phone" class="form-control" placeholder="05XX XXX XX XX" pattern="05\d{9}" title="Telefon numaranızı 05 başlayarak boşluk olmadan ve 11 haneli olarak yazın">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -62,11 +60,11 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="submit" value="Şimdi Rezervasyon Yap" class="btn btn-white py-3 px-4">
+                                <input id="btnReservationNow" value="Şimdi Rezervasyon Yap" class="btn btn-white py-3 px-4">
                             </div>
                         </div>
                     </div>
-                }
+                </form>
             </div>
         </div>
     </div>

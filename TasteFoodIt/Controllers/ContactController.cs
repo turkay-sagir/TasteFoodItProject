@@ -11,7 +11,6 @@ namespace TasteFoodIt.Controllers
     public class ContactController : Controller
     {
         TasteContext context = new TasteContext();
-        // GET: Contact
         public ActionResult Index()
         {
             ViewBag.PageTitle = "İletişim";
@@ -46,13 +45,16 @@ namespace TasteFoodIt.Controllers
             return View(value);
         }
 
-        public ActionResult SendMessage(Contact p)
+        [HttpPost]
+        public JsonResult SendMessage(Contact p)
         {
+            System.Threading.Thread.Sleep(500);
             p.SendDate = DateTime.Now;
             p.IsRead = false;
             context.Contacts.Add(p);
             context.SaveChanges();
-            return RedirectToAction("Index", "Contact");
+
+            return Json(p, JsonRequestBehavior.AllowGet);
         }
 
     }

@@ -44,15 +44,15 @@ namespace TasteFoodIt.Controllers
             return View(values);
         }
 
-        [HttpPost]
-        public ActionResult CreateReservation(Reservation p)
-        {
 
+        [HttpPost]
+        public JsonResult CreateReservation(Reservation p)
+        {
             p.ReservationStatus = "Dolu";
             context.Reservations.Add(p);
             context.SaveChanges();
 
-            return RedirectToAction("Index", "Reservation");
+            return Json(p, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteReservation(int id)
@@ -147,7 +147,7 @@ namespace TasteFoodIt.Controllers
         {
             var value = context.Reservations.Find(p.ReservationId);
 
-            if(p.ReservationDate>DateTime.MinValue)
+            if(p.ReservationDate>DateTime.MinValue) //Tarih boş bırakılırsa
             {
                 value.ReservationDate = p.ReservationDate;
             }

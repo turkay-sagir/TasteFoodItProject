@@ -2271,6 +2271,7 @@
     <Content Include="Templates\tasteit-master\index.html" />
     <Content Include="Templates\tasteit-master\js\bootstrap-datepicker.js" />
     <Content Include="Templates\tasteit-master\js\bootstrap.min.js" />
+    <Content Include="Templates\tasteit-master\js\forms.js" />
     <Content Include="Templates\tasteit-master\js\google-map.js" />
     <Content Include="Templates\tasteit-master\js\jquery-3.2.1.min.js" />
     <Content Include="Templates\tasteit-master\js\jquery-migrate-3.0.1.min.js" />

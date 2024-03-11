@@ -1,7 +1,5 @@
-﻿
-<div class="col-sm-4 p-4 p-md-5 d-flex align-items-center justify-content-center bg-primary">
-    @using (Html.BeginForm("CreateReservation", "Reservation", FormMethod.Post, new { enctype = "multipart/form-data", @class = "appointment-form" }))
-    {
+﻿<div class="col-sm-4 p-4 p-md-5 d-flex align-items-center justify-content-center bg-primary">
+    <form id="reservationForm" class="appointment-form">
         <h3 class="mb-3">Masanızı Ayırtın</h3>
         <div class="row">
             <div class="col-md-12">
@@ -16,7 +14,7 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
-                    <input type="text" name="Phone" class="form-control" placeholder="05XX XXX XX XX" pattern="05\d{9}" title="Telefon numarası 05 başlayarak boşluk olmadan ve 11 haneli olarak yazın">
+                    <input type="text" name="Phone" class="form-control" placeholder="05XX XXX XX XX" pattern="05\d{9}" title="Telefon numaranızı 05 başlayarak boşluk olmadan ve 11 haneli olarak yazın">
                 </div>
             </div>
             <div class="col-md-12">
@@ -42,7 +40,7 @@
                             <div class="icon"><span class="fa fa-chevron-down"></span></div>
                             <select name="GuestCount" id="" class="form-control">
                                 <option class="bg-primary" value="0">Misafir Sayısı</option>
-                                <option class="bg-primary" value="1">1</option>
+                                <option class="bg-primary" value="2">1</option>
                                 <option class="bg-primary" value="2">2</option>
                                 <option class="bg-primary" value="3">3</option>
                                 <option class="bg-primary" value="4">4</option>
@@ -54,10 +52,10 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
-                    <input type="submit" value="Şimdi Rezervasyon Yap" class="btn btn-white py-3 px-4">
+                    <input id="btnReservationNow" class="btn btn-white py-3 px-4" value="Şimdi Rezervasyon Yap" />
                 </div>
             </div>
         </div>
-    }
-</div>
+    </form>
 
+</div>
