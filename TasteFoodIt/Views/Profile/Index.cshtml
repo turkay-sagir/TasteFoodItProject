@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Profil Bilgileri</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Ana Sayfa</a></li>
+            <li class="breadcrumb-item">Profilim</li>
+            <li class="breadcrumb-item active" aria-current="page">Profil İşlemleri</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <!-- Simple Tables -->
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Kullanıcı Adı:</th>
+                                <td>@ViewBag.Username</td>
+                            </tr>
+                            <tr>
+                                <th>İsim Soyisim:</th>
+                                <td>@ViewBag.NameSurname</td>
+                            </tr>
+                            <tr>
+                                <th style="vertical-align:middle">Profil Fotoğrafı:</th>
+                                <td><img src="@ViewBag.ProfilePhoto" style="width: 150px; height: 150px" /></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

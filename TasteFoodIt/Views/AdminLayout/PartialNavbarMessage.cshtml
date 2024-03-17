@@ -1,0 +1,45 @@
+﻿@model List<TasteFoodIt.Entities.Contact>
+
+<li class="nav-item dropdown no-arrow mx-1">
+    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+       aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-envelope fa-fw"></i>
+        <span class="badge badge-warning badge-counter">@ViewBag.messageIsReadByFalseCount</span>
+    </a>
+    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+         aria-labelledby="messagesDropdown">
+        <h6 class="dropdown-header">
+            MESAJ LİSTESİ
+        </h6>
+        @if (ViewBag.messageIsReadByFalseCount != 0)
+        {
+            foreach (var item in Model)
+            {
+                <a class="dropdown-item d-flex align-items-center" href="/Contact/MessageDetail/@item.ContactId">
+                    <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="~/Templates/ruang-admin/img/man.png" style="max-width: 60px" alt="">
+                        <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div class="font-weight-bold">
+                        <div class="text-truncate">@item.Message</div>
+                        <div class="small text-gray-500">@item.NameSurname</div>
+                    </div>
+                </a>
+            }
+        }
+        else
+        {
+            <a class="dropdown-item d-flex align-items-center">
+                <div class="mr-3">
+                    <div class="icon-circle bg-danger">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-weight-bold">Okunmamış Mesaj Yoktur!</span>
+                </div>
+            </a>
+        }
+        <a class="dropdown-item text-center small text-gray-500" href="/Contact/MessageList">Tüm Mesajları Göster</a>
+    </div>
+</li>

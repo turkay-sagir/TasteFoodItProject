@@ -1,0 +1,49 @@
+﻿@model List<TasteFoodIt.Entities.Notification>
+
+<li class="nav-item dropdown no-arrow mx-1">
+    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+       aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bell fa-fw"></i>
+        <span class="badge badge-danger badge-counter">@ViewBag.notificationIsReadByFalseCount</span>
+    </a>
+    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+         aria-labelledby="alertsDropdown">
+        <h6 class="dropdown-header">
+            BİLDİRİM LİSTESİ
+        </h6>
+        @if (ViewBag.notificationIsReadByFalseCount != 0)
+        {
+            foreach (var item in Model)
+            {
+                <a class="dropdown-item d-flex align-items-center" href="/AdminLayout/NotificationStatusChangeToTrue/@item.NotificationId">
+                    <div class="mr-3">
+                        <div class="@item.IconCircleColor">
+                            <i class="@item.NotificationIcon"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">@(((DateTime)item.Date).ToString("MMMM, dd, yyyy"))</div>
+                        <span class="font-weight-bold">@item.Description</span>
+                    </div>
+                </a>
+
+
+            }
+        }
+        else
+        {
+            <a class="dropdown-item d-flex align-items-center">
+                <div class="mr-3">
+                    <div class="icon-circle bg-danger">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-weight-bold">Okunmamış Bildirim Yoktur!</span>
+                </div>
+            </a>
+        }
+
+        <a class="dropdown-item text-center small text-gray-500" href="/Notification/NotificationList">Tüm Bildirimleri Göster</a>
+    </div>
+</li>

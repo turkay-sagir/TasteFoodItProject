@@ -46,7 +46,7 @@ $(document).ready(function () {
             .done(function (data) {
 
                 Swal.fire(
-                    'Rezervasyon İşleminiz Tamamnlandı',
+                    'Rezervasyon İşleminiz Tamamlandı',
                     '',
                     'success'
                 ),

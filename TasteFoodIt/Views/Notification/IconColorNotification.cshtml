@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = null;
+    List<string> iconColor = ViewBag.iconColor;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="~/Templates/ruang-admin/img/logo/logo.png" rel="icon">
+    <title>Taste Food It Admin Paneli</title>
+    <link href="~/Templates/ruang-admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Templates/ruang-admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Templates/ruang-admin/css/ruang-admin.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <!-- Container Fluid-->
+                <div class="container-fluid" id="container-wrapper">
+                    <div style="margin-top:20px" class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">İkon Renkleri</h1>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <!-- Simple Tables -->
+                            <div class="card">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush">
+                                        <thead class="thead-light">
+                                            @foreach (var item in iconColor)
+                                            {
+                                                <tr>
+                                                    <th><input type="radio" name="IconCircleColor" value="icon-circle @item"> @item</th>
+                                                    <td><div class="icon-circle @item"></div></td>
+                                                </tr>
+                                            }
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!---Container Fluid-->
+            </div>
+        </div>
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <script src="~/Templates/ruang-admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Templates/ruang-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Templates/ruang-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/Templates/ruang-admin/js/ruang-admin.min.js"></script>
+
+</body>
+</html>

@@ -21,6 +21,22 @@ namespace TasteFoodIt.Controllers
         [HttpGet]
         public ActionResult CreateCategory()
         {
+            List<SelectListItem> icons = new List<SelectListItem>
+            {
+                new SelectListItem {Text="Ekmek", Value="flat flaticon-bread"},
+                new SelectListItem {Text="Kahvaltı", Value="flat flaticon-breakfast"},
+                new SelectListItem {Text="Burger", Value="flat flaticon-burger"},
+                new SelectListItem {Text="Tavuk", Value="flat flaticon-chicken-leg"},
+                new SelectListItem {Text="Cupcake", Value="flat flaticon-cupcake"},
+                new SelectListItem {Text="Dondurma", Value="flat flaticon-ice-cream"},
+                new SelectListItem {Text="Omlet", Value="flat flaticon-omelette"},
+                new SelectListItem {Text="Pizza", Value="flat flaticon-pizza"},
+                new SelectListItem {Text="İçecek 1", Value="flat flaticon-wine"},
+                new SelectListItem {Text="İçecek 2", Value="flat flaticon-wine-1"}
+            };
+
+            ViewBag.icons = icons;
+
             return View();
         }
 
@@ -44,14 +60,32 @@ namespace TasteFoodIt.Controllers
         public ActionResult UpdateCategory(int id)
         {
             var value = context.Categories.Find(id);
+
+            List<SelectListItem> icons = new List<SelectListItem>
+            {
+                new SelectListItem {Text="Ekmek", Value="flat flaticon-bread"},
+                new SelectListItem {Text="Kahvaltı", Value="flat flaticon-breakfast"},
+                new SelectListItem {Text="Burger", Value="flat flaticon-burger"},
+                new SelectListItem {Text="Tavuk", Value="flat flaticon-chicken-leg"},
+                new SelectListItem {Text="Cupcake", Value="flat flaticon-cupcake"},
+                new SelectListItem {Text="Dondurma", Value="flat flaticon-ice-cream"},
+                new SelectListItem {Text="Omlet", Value="flat flaticon-omelette"},
+                new SelectListItem {Text="Pizza", Value="flat flaticon-pizza"},
+                new SelectListItem {Text="İçecek 1", Value="flat flaticon-wine"},
+                new SelectListItem {Text="İçecek 2", Value="flat flaticon-wine-1"}
+            };
+
+            ViewBag.icons = icons;
+
             return View(value);
         }
 
         [HttpPost]
-        public ActionResult UpdateCategory(Category category)
+        public ActionResult UpdateCategory(Category p)
         {
-            var value = context.Categories.Find(category.CategoryId);
-            value.CategoryName = category.CategoryName;
+            var value = context.Categories.Find(p.CategoryId);
+            value.CategoryName = p.CategoryName;
+            value.IconUrl = p.IconUrl;
             context.SaveChanges();
             return RedirectToAction("CategoryList");
         }

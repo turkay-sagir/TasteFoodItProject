@@ -26,6 +26,12 @@
                                 <label>Kategori Adı</label>
                                 @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
                             </div>
+
+                            <div class="form-group">
+                                <label>İkon Url</label>
+                                @Html.DropDownListFor(x => x.IconUrl, (List<SelectListItem>)ViewBag.icons, new { @class = "form-control" })
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Kategori Ekle</button>
                         </form>
                     }

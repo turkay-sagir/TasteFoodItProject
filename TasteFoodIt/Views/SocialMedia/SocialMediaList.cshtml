@@ -1,0 +1,84 @@
+﻿@model List<TasteFoodIt.Entities.SocialMedia>
+@{
+    ViewBag.Title = "SocialMediaList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Kategori Listesi</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Ana Sayfa</a></li>
+            <li class="breadcrumb-item">Sosyal Medya</li>
+            <li class="breadcrumb-item active" aria-current="page">Sosyal Medya İşlemleri</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <!-- Simple Tables -->
+            <div class="card">
+                <div class="table-responsive">
+                    <table id="tbl1" class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Id</th>
+                                <th>Platform Adı</th>
+                                <th>Platform Url</th>
+                                <th>Durum</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                string state = "";
+                                string value = "";
+
+                                if(item.Status==true)
+                                {
+                                    state = "bg-success";
+                                    value = "Aktif";
+                                }
+                                else
+                                {
+                                    state = "bg-dark";
+                                    value = "Pasif";
+                                }
+
+                                <tr>
+                                    <td>@item.SocialMediaId</td>
+                                    <td>@item.PlatformName</td>
+                                    <td>@item.RedirectUrl</td>
+                                    <td><a href="/SocialMedia/StatusChangeSocialMedia/@item.SocialMediaId"><span class="badge @state" style="color:lemonchiffon;font-size:16px">@value</span></a></td>
+                                    <td>@Html.ActionLink("Sil", "DeleteSocialMedia", new { id = item.SocialMediaId }, new {@class="btn btn-danger", onclick="return confirm('Silmek İstediğinizden Emin Misiniz?')"})</td>
+                                    <td><a href="/SocialMedia/UpdateSocialMedia/@item.SocialMediaId" class="btn btn-success">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="card-footer"></div>
+            </div>
+        </div>
+    </div>
+    <a href="/SocialMedia/CreateSocialMedia" class="btn btn-primary">Yeni Sosyal Medya Girişi</a>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
+
+
+<link href="https://cdn.datatables.net/2.0.2/css/dataTables.bootstrap5.css" rel="stylesheet" />
+
+<script>
+    $('#tbl1').DataTable({
+        language: {
+            url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+        }
+    });
+</script>
+

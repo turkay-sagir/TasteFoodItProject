@@ -13,11 +13,14 @@ namespace TasteFoodIt.Controllers
     public class ProductController : Controller
     {
         TasteContext context = new TasteContext();
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             ViewBag.PageTitle = "Menü";
             return View();
         }
+
         public ActionResult ProductList()
         {
             var values = context.Products.ToList();
@@ -54,6 +57,7 @@ namespace TasteFoodIt.Controllers
                                            ).ToList();
 
             ViewBag.values = values;
+            
             return View();
         }
 
@@ -96,6 +100,8 @@ namespace TasteFoodIt.Controllers
                                            }
                                            ).ToList();
 
+            
+
             ViewBag.values = values;
 
             return View(value);
@@ -119,6 +125,7 @@ namespace TasteFoodIt.Controllers
             value.ProductName = p.ProductName;
             value.Description = p.Description;
             value.Price = p.Price;
+            value.CategoryId = p.CategoryId;
             value.IsActive = true;
             context.SaveChanges();
             return RedirectToAction("ProductList");

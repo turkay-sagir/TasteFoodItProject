@@ -13,6 +13,7 @@ namespace TasteFoodIt.Controllers
     {
         TasteContext context = new TasteContext();
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             ViewBag.PageTitle = "Şeflerimiz";

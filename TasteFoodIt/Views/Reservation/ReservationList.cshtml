@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "ReservationList";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
 
 <div class="container-fluid" id="container-wrapper">
@@ -19,7 +20,7 @@
             <!-- Simple Tables -->
             <div class="card">
                 <div class="table-responsive">
-                    <table class="table align-items-center table-flush">
+                    <table id="tbl1" class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
                                 <th>Id</th>
@@ -30,6 +31,7 @@
                                 <th>Saat</th>
                                 <th>Misafir Sayısı</th>
                                 <th>Rezervasyon Durumu</th>
+                                <th>Rezervasyon İşlemi</th>
                                 <th>Sil</th>
                                 <th>Güncelle</th>
                             </tr>
@@ -37,29 +39,59 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
+                                count++;
                                 string state = "";
                                 string value = "";
 
-                                if(item.ReservationStatus=="Boş")
-                                {
-                                    state = "bg-dark";
-                                    value = "Boş";
-                                }
-                                else
+                                if (item.ReservationStatus == "Bekliyor")
                                 {
                                     state = "bg-warning";
-                                    value = "Dolu";
+                                    value = "Bekliyor";
+                                }
+                                else if (item.ReservationStatus == "Onaylandı")
+                                {
+                                    state = "bg-success";
+                                    value = "Onaylandı";
+                                }
+
+                                else
+                                {
+                                    state = "bg-dark";
+                                    value = "İptal Edildi";
                                 }
 
                                 <tr>
-                                    <td>@item.ReservationId</td>
+                                    <td>@count</td>
                                     <td>@item.Name</td>
                                     <td>@item.Email</td>
                                     <td>@item.Phone</td>
                                     <td>@(((DateTime)item.ReservationDate).ToString("d"))</td>
                                     <td>@item.Time</td>
                                     <td>@item.GuestCount</td>
-                                    <td><a href="/Reservation/ReservationStatusChange/@item.ReservationId"><span class="badge @state" style="color:lemonchiffon;font-size:initial">@value</span></a></td>
+                                    <td><span class="badge @state" style="color:lemonchiffon;font-size:initial">@value</span></td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            @using (Html.BeginForm("ReservationStatusChange", "Reservation", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                            {
+                                                <input type="hidden" name="id" value="@item.ReservationId" />
+                                                <input type="hidden" name="state" value="Onaylandı" />
+                                                <button style="margin-right:5px" type="submit" class="btn btn-success">Onayla</button>
+                                            }
+
+                                            @using (Html.BeginForm("ReservationStatusChange", "Reservation", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                            {
+                                                <input type="hidden" name="id" value="@item.ReservationId" />
+                                                <input type="hidden" name="state" value="Bekliyor" />
+                                                <button style="margin-right:5px" type="submit" class="btn btn-warning">Beklet</button>
+                                            }
+                                            @using (Html.BeginForm("ReservationStatusChange", "Reservation", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                            {
+                                                <input type="hidden" name="id" value="@item.ReservationId" />
+                                                <input type="hidden" name="state" value="İptal Edildi" />
+                                                <button type="submit" class="btn btn-danger">İptal</button>
+                                            }
+                                        </div>
+                                    </td>
                                     <td>@Html.ActionLink("Sil", "DeleteReservation", new { id = item.ReservationId }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstediğinizden Emin Misiniz?')" })</td>
                                     <td><a href="/Reservation/UpdateReservation/@item.ReservationId" class="btn btn-success">Güncelle</a></td>
                                 </tr>
@@ -74,3 +106,17 @@
     </div>
 </div>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
+
+
+<link href="https://cdn.datatables.net/2.0.2/css/dataTables.bootstrap5.css" rel="stylesheet" />
+
+<script>
+    $('#tbl1').DataTable({
+        language: {
+            url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+        }
+    });
+</script>

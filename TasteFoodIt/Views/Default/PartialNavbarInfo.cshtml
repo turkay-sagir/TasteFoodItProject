@@ -1,4 +1,4 @@
-﻿
+﻿@model List<TasteFoodIt.Entities.SocialMedia>
 <div class="wrap">
     <div class="container">
         <div class="row justify-content-between">
@@ -9,10 +9,11 @@
                 <p class="mb-0">@ViewBag.description</p>
                 <div class="social-media">
                     <p class="mb-0 d-flex">
-                        <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-                        <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-                        <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-                        <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+                        @foreach (var item in Model)
+                        {
+                            <a href="@item.RedirectUrl" target="_blank" class="d-flex align-items-center justify-content-center"><span class="@item.IconUrl"><i class="sr-only">@item.PlatformName</i></span></a>
+                        }
+
                     </p>
                 </div>
             </div>

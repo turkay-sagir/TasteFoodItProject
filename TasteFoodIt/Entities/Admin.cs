@@ -10,5 +10,7 @@ namespace TasteFoodIt.Entities
         public int AdminId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string ProfilePhoto { get; set; }
+        public string NameSurname { get; set; }
     }
 }

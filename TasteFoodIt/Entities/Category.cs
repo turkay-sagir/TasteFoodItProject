@@ -9,6 +9,7 @@ namespace TasteFoodIt.Entities
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+        public string IconUrl { get; set; }
         public List<Product> Products { get; set; }
     }
 }

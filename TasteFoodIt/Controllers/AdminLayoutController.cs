@@ -25,11 +25,41 @@ namespace TasteFoodIt.Controllers
             return PartialView();
         }
 
-        public PartialViewResult PartialNavbar()
+        public PartialViewResult PartialNavbarNotification()
         {
             ViewBag.notificationIsReadByFalseCount = context.Notifications.Where(x => x.IsRead == false).Count();
             var values = context.Notifications.Where(x => x.IsRead == false).ToList();
             return PartialView(values);
+        }
+
+        public PartialViewResult PartialNavbarMessage()
+        {
+            ViewBag.messageIsReadByFalseCount = context.Contacts.Where(x => x.IsRead == false).Count();
+            var values = context.Contacts.Where(x => x.IsRead == false).ToList();
+            return PartialView(values);
+        }
+
+        public PartialViewResult PartialNavbarUser()
+        {
+
+            if (Session["Username"]!=null)
+            {
+                ViewBag.NameSurname = Session["NameSurname"];
+                ViewBag.ProfilePhoto = Session["ProfilePhoto"];
+
+            }
+            else
+            {
+                ViewBag.NameSurname = "Misafir";
+                ViewBag.ProfilePhoto = "/Templates/ruang-admin/img/boy.png";
+            }
+
+            return PartialView();
+        }
+
+        public PartialViewResult PartialNavbar()
+        {
+            return PartialView();
         }
 
 
@@ -48,7 +78,8 @@ namespace TasteFoodIt.Controllers
             var value = context.Notifications.Find(id);
             value.IsRead = true;
             context.SaveChanges();
-            return RedirectToAction("ProductList", "Product");
+
+            return RedirectToAction("NotificationList", "Notification");
         }
 
     }

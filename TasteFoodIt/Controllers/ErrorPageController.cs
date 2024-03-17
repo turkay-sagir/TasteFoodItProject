@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace TasteFoodIt.Controllers
 {
+    [AllowAnonymous]
     public class ErrorPageController : Controller
     {
         // GET: ErrorPage

@@ -13,26 +13,18 @@ namespace TasteFoodIt.Controllers
     {
         TasteContext context = new TasteContext();
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             ViewBag.PageTitle = "Rezervasyon";
             return View();
         }
 
-        public ActionResult ReservationStatusChange(int id)
+        public ActionResult ReservationStatusChange(int id, string state)
         {
             var value = context.Reservations.Find(id);
 
-            if(value.ReservationStatus=="Boş")
-            {
-                value.ReservationStatus = "Dolu";
-            }
-
-            else
-            {
-                value.ReservationStatus = "Boş";
-            }
-
+            value.ReservationStatus = state;
             context.SaveChanges();
 
             return RedirectToAction("ReservationList");
@@ -48,7 +40,7 @@ namespace TasteFoodIt.Controllers
         [HttpPost]
         public JsonResult CreateReservation(Reservation p)
         {
-            p.ReservationStatus = "Dolu";
+            p.ReservationStatus = "Bekliyor";
             context.Reservations.Add(p);
             context.SaveChanges();
 
@@ -70,8 +62,9 @@ namespace TasteFoodIt.Controllers
 
             List<SelectListItem> list1 = new List<SelectListItem>()
             {
-                new SelectListItem{Text="Dolu", Value = "Dolu"},
-                new SelectListItem{Text="Boş",Value="Boş" }
+                new SelectListItem{Text="Onaylandı", Value = "Onaylandı"},
+                new SelectListItem{Text="Bekliyor",Value="Bekliyor" },
+                new SelectListItem{Text="İptal Edildi",Value="İptal Edildi" }
             };
 
             List<SelectListItem> list2 = new List<SelectListItem>()

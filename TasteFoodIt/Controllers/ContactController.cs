@@ -11,6 +11,8 @@ namespace TasteFoodIt.Controllers
     public class ContactController : Controller
     {
         TasteContext context = new TasteContext();
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             ViewBag.PageTitle = "İletişim";

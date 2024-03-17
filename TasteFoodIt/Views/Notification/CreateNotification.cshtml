@@ -1,0 +1,91 @@
+﻿@model TasteFoodIt.Entities.Notification
+@{
+    ViewBag.Title = "CreateNotification";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Bildirim Ekleme Sayfası</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Ana Sayfa</a></li>
+            <li class="breadcrumb-item">Bildirim</li>
+            <li class="breadcrumb-item active" aria-current="page">Bildirim İşlemleri</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Form Basic -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    @using (Html.BeginForm("CreateNotification", "Notification", FormMethod.Post, new { id = "notificationForm", enctype = "multipart/form-data" }))
+                    {
+                        <div class="form-group">
+                            <label>Açıklama</label>
+                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @rows = 3 })
+                        </div>
+
+                        <table class="col-lg-8" border="0">
+                            <thead>
+                                <tr>
+                                    <th>İkon Seçimi</th>
+                                    <th>İkon Rengi Seçimi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="width: 300px; height: 300px;" id="iconSelection"></div>
+                                    </td>
+                                    <td>
+                                        <div style="width: 300px; height: 300px;" id="colorSelection"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-primary">Bildirim Ekle</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+    $(document).ready(function () {
+        // İkon seçimi için AJAX ile içeriği yükle
+        $.ajax({
+            url: '@Url.Action("IconNotification", "Notification")',
+            type: 'GET',
+            success: function (data) {
+                $('#iconSelection').html(data);
+            }
+        });
+
+        // İkon renk seçimi için AJAX ile içeriği yükle
+        $.ajax({
+            url: '@Url.Action("IconColorNotification", "Notification")',
+            type: 'GET',
+            success: function (data) {
+                $('#colorSelection').html(data);
+            }
+        });
+
+        // Form submit olduğunda, seçilen icon değerini hidden input içine yerleştir
+        $('#notificationForm').submit(function () {
+            var selectedIcon = $('input[name="NotificationIcon"]:checked').val();
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'NotificationIcon',
+                value: selectedIcon
+            }).appendTo('#notificationForm');
+            return true;
+        });
+    });
+</script>

@@ -8,6 +8,7 @@ using TasteFoodIt.Context;
 
 namespace TasteFoodIt.Controllers
 {
+    [AllowAnonymous]
     public class DefaultController : Controller
     {
         TasteContext context = new TasteContext();
@@ -30,10 +31,12 @@ namespace TasteFoodIt.Controllers
 
         public PartialViewResult PartialNavbarInfo()
         {
+            var value = context.SocialMedias.Where(x => x.Status == true).ToList();
+
             ViewBag.phone = context.Addresses.Select(x => x.Phone).FirstOrDefault();
             ViewBag.email = context.Addresses.Select(y => y.Email).FirstOrDefault();
             ViewBag.description = context.Addresses.Select(z => z.Description).FirstOrDefault();
-            return PartialView();
+            return PartialView(value);
         }
 
         public PartialViewResult PartialNavbar()
@@ -43,7 +46,8 @@ namespace TasteFoodIt.Controllers
 
         public PartialViewResult PartialSlider()
         {
-            return PartialView();
+            var values = context.Sliders.ToList();
+            return PartialView(values);
         }
 
         public PartialViewResult PartialAbout()
@@ -61,8 +65,14 @@ namespace TasteFoodIt.Controllers
 
         public PartialViewResult PartialMenu()
         {
-            var values = context.Products.Where(x => x.IsActive == true).ToList();
-            return PartialView(values);
+            var productsByCategory = context.Products.Where(x => x.IsActive == true).GroupBy(x => x.CategoryId).ToDictionary(g => g.Key, g => g.ToList());
+
+            return PartialView(productsByCategory);
+        }
+
+        public PartialViewResult PartialMenuByCategory()
+        {
+            return PartialView();
         }
 
         public PartialViewResult PartialTestimonial()
@@ -91,6 +101,27 @@ namespace TasteFoodIt.Controllers
         {
             var values = context.OpenDayHours.ToList();
             return PartialView(values);
+        }
+
+        public PartialViewResult PartialSocialMedia()
+        {
+            var values = context.SocialMedias.Where(x=>x.Status==true).ToList();
+            return PartialView(values);
+        }
+
+        public PartialViewResult PartialOpenDayHour()
+        {
+            var values = context.OpenDayHours.ToList();
+            return PartialView(values);
+        }
+
+        public PartialViewResult PartialStatistic()
+        {
+            ViewBag.categoryCount = context.Categories.Count();
+            ViewBag.productCount = context.Products.Count();
+            ViewBag.chefCount = context.Chefs.Count();
+            ViewBag.reservationCount = context.Reservations.Count();
+            return PartialView();
         }
 
 

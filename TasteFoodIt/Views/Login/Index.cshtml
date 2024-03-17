@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div style="text-align: center; margin-top: 100px;">
+    <div style="display: inline-block; padding: 20px; background-color: #add8e6; border: 1px solid #ccc; border-radius: 5px; ">
+
+        <h1 style="font-size: 25px;">Login Ekranı</h1>
+
+        <form id="formLogin" method="post">
+            <div style="margin-bottom:15px; text-align: left;">
+                <label style="font-weight: bold;">Kullanıcı Adınız & Email Adresiniz</label><br />
+                <input type="text" name="Username" class="form-control" />
+            </div>
+            <div style="margin-bottom:15px; text-align: left;">
+                <label style="font-weight: bold;">Şifreniz</label><br />
+                <input type="password" name="Password" class="form-control" />
+            </div>
+            @if (ViewBag.error != null)
+            {
+                <div style="width:fit-content" class="alert alert-danger">@ViewBag.error</div>
+            }
+            <button id="btnLogin" class="btn btn-primary">Giriş Yap</button>
+        </form>
+
+    </div>
+</div>

@@ -19,7 +19,7 @@
             <!-- Simple Tables -->
             <div class="card">
                 <div class="table-responsive">
-                    <table class="table align-items-center table-flush">
+                    <table id="tbl1" class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
                                 <th>Id</th>
@@ -34,7 +34,7 @@
                             {
                                 string state = "";
                                 string value = "";
-                                if(item.IsRead==true)
+                                if (item.IsRead == true)
                                 {
                                     state = "btn-dark";
                                     value = "Okunmadı Olarak İşaretle";
@@ -50,8 +50,8 @@
                                     <td>@item.NotificationId</td>
                                     <td>@item.Description</td>
                                     <td><a href="/Notification/StatusChangeNotification/@item.NotificationId" class="btn @state">@value</a></td>
-                                    <td><a href="/Category/DeleteCategory/@item.NotificationId" class="btn btn-danger">Sil</a></td>
-                                    <td><a href="/Category/UpdateCategory/@item.NotificationId" class="btn btn-success">Güncelle</a></td>
+                                    <td><a href="/Notification/DeleteNotification/@item.NotificationId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Notification/UpdateNotification/@item.NotificationId" class="btn btn-success">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
@@ -65,3 +65,17 @@
     <a href="/Notification/CreateNotification" class="btn btn-primary">Yeni Bildirim Girişi</a>
 </div>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
+
+
+<link href="https://cdn.datatables.net/2.0.2/css/dataTables.bootstrap5.css" rel="stylesheet" />
+
+<script>
+    $('#tbl1').DataTable({
+        language: {
+            url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+        }
+    });
+</script>
