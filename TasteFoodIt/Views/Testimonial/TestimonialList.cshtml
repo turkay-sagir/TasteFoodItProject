@@ -26,6 +26,7 @@
                                 <th>Adı Soyadı</th>
                                 <th>Ünvan</th>
                                 <th>Açıklama</th>
+                                <th>Fotoğraf</th>
                                 <th>Sil</th>
                                 <th>Güncelle</th>
                             </tr>
@@ -38,6 +39,7 @@
                                     <td>@item.NameSurname</td>
                                     <td>@item.Title</td>
                                     <td>@item.Description</td>
+                                    <td><img src="@item.ImageUrl" height="100px" width="100px" class="img-thumbnail"</td>
                                     <td>@Html.ActionLink("Sil", "DeleteTestimonial", new { id = item.TestimonialId }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstediğinizden Emin Misiniz?')" })</td>
                                     <td><a href="/Testimonial/UpdateTestimonial/@item.TestimonialId" class="btn btn-success">Güncelle</a></td>
                                 </tr>
@@ -51,18 +53,3 @@
     </div>
     <a href="/Testimonial/CreateTestimonial" class="btn btn-primary">Yeni Referans Girişi</a>
 </div>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
-
-
-<link href="https://cdn.datatables.net/2.0.2/css/dataTables.bootstrap5.css" rel="stylesheet" />
-
-<script>
-    $('#tbl1').DataTable({
-        language: {
-            url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
-        }
-    });
-</script>

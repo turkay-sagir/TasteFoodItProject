@@ -39,7 +39,7 @@
                                     <td>@item.Username</td>
                                     <td>@item.Password</td>
                                     <td>@item.NameSurname</td>
-                                    <td><img src="@item.ProfilePhoto" style="width:50px;height:50px" /></td>
+                                    <td><img src="@item.ProfilePhoto" height="100px" width="100px" class="img-thumbnail" /></td>
                                     <td>@Html.ActionLink("Sil", "DeleteAdmin", new { id = item.AdminId }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstediğinizden Emin Misiniz?')" })</td>
                                     <td><a href="/Admin/UpdateAdmin/@item.AdminId" class="btn btn-success">Güncelle</a></td>
                                 </tr>
