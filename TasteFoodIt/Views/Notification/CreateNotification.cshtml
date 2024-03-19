@@ -26,23 +26,109 @@
                             @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @rows = 3 })
                         </div>
 
-                        <table class="col-lg-8" border="0">
-                            <thead>
-                                <tr>
-                                    <th>İkon Seçimi</th>
-                                    <th>İkon Rengi Seçimi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div style="width: 300px; height: 300px;" id="iconSelection"></div>
-                                    </td>
-                                    <td>
-                                        <div style="width: 300px; height: 300px;" id="colorSelection"></div>
-                                    </td>
-                                </tr>
-                            </tbody>
+                        <table class="table-borderless">
+                            <tr>
+                                <td>
+                                    <div style="margin-bottom:20px" class="container-fluid">
+                                        <div style="margin-top:20px" class="d-sm-flex align-items-center justify-content-between mb-4">
+                                            <h1 class="h3 mb-0 text-gray-800">İkonlar</h1>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card">
+                                                    <div class="table-responsive">
+                                                        <table class="table align-items-center table-flush">
+                                                            <thead class="thead-light">
+                                                                <tr>
+                                                                    <th><input type="radio" name="NotificationIcon" value="fas fa-calendar-check text-white"> Calendar Check</th>
+                                                                    <td><div class="icon-circle bg-primary"><i class="fas fa-calendar-check text-white"></i></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="NotificationIcon" value="fas fa-comment text-white"> Comment</th>
+                                                                    <td><div class="icon-circle bg-primary"><i class="fas fa-comment text-white"></i></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="NotificationIcon" value="fas fa-envelope text-white"> Envelope</th>
+                                                                    <td><div class="icon-circle bg-primary"><i class="fas fa-envelope text-white"></i></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="NotificationIcon" value="fas fa-file text-white"> File</th>
+                                                                    <td><div class="icon-circle bg-primary"><i class="fas fa-file text-white"></i></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="NotificationIcon" value="fas fa-inbox text-white"> Inbox</th>
+                                                                    <td><div class="icon-circle bg-primary"><i class="fas fa-inbox text-white"></i></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="NotificationIcon" value="fas fa-address-card text-white"> Person Card</th>
+                                                                    <td><div class="icon-circle bg-primary"><i class="fas fa-address-card text-white"></i></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="NotificationIcon" value="fas fa-pen text-white"> Pen</th>
+                                                                    <td><div class="icon-circle bg-primary"><i class="fas fa-pen text-white"></i></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="NotificationIcon" value="fas fa-shopping-bag text-white"> Shopping Bag</th>
+                                                                    <td><div class="icon-circle bg-primary"><i class="fas fa-shopping-bag text-white"></i></div></td>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="margin-bottom:20px" class="container-fluid">
+                                        <div style="margin-top:20px" class="d-sm-flex align-items-center justify-content-between mb-4">
+                                            <h1 class="h3 mb-0 text-gray-800">İkon Renkleri</h1>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="card">
+                                                    <div class="table-responsive">
+                                                        <table class="table align-items-center table-flush">
+                                                            <thead class="thead-light">
+                                                                <tr>
+                                                                    <th><input type="radio" name="IconCircleColor" value="icon-circle bg-primary"> Primary</th>
+                                                                    <td><div class="icon-circle bg-primary"></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="IconCircleColor" value="icon-circle bg-secondary"> Secondary</th>
+                                                                    <td><div class="icon-circle bg-secondary"></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="IconCircleColor" value="icon-circle bg-success"> Success</th>
+                                                                    <td><div class="icon-circle bg-success"></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="IconCircleColor" value="icon-circle bg-danger"> Danger</th>
+                                                                    <td><div class="icon-circle bg-danger"></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="IconCircleColor" value="icon-circle bg-warning"> Warning</th>
+                                                                    <td><div class="icon-circle bg-warning"></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="IconCircleColor" value="icon-circle bg-info"> Info</th>
+                                                                    <td><div class="icon-circle bg-info"></div></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th><input type="radio" name="IconCircleColor" value="icon-circle bg-dark"> Dark</th>
+                                                                    <td><div class="icon-circle bg-dark"></div></td>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                         </table>
                         <button type="submit" class="btn btn-primary">Bildirim Ekle</button>
                     }
@@ -53,39 +139,4 @@
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
-<script>
-
-    $(document).ready(function () {
-        // İkon seçimi için AJAX ile içeriği yükle
-        $.ajax({
-            url: '@Url.Action("IconNotification", "Notification")',
-            type: 'GET',
-            success: function (data) {
-                $('#iconSelection').html(data);
-            }
-        });
-
-        // İkon renk seçimi için AJAX ile içeriği yükle
-        $.ajax({
-            url: '@Url.Action("IconColorNotification", "Notification")',
-            type: 'GET',
-            success: function (data) {
-                $('#colorSelection').html(data);
-            }
-        });
-
-        // Form submit olduğunda, seçilen icon değerini hidden input içine yerleştir
-        $('#notificationForm').submit(function () {
-            var selectedIcon = $('input[name="NotificationIcon"]:checked').val();
-            $('<input>').attr({
-                type: 'hidden',
-                name: 'NotificationIcon',
-                value: selectedIcon
-            }).appendTo('#notificationForm');
-            return true;
-        });
-    });
-</script>

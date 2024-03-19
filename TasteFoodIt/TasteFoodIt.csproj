@@ -536,7 +536,6 @@
     <Content Include="Templates\ruang-admin\img\think.svg" />
     <Content Include="Templates\ruang-admin\img\undraw_posting_photo.svg" />
     <Content Include="Templates\ruang-admin\index.html" />
-    <Content Include="Templates\ruang-admin\index6.html" />
     <Content Include="Templates\ruang-admin\js\demo\chart-area-demo.js" />
     <Content Include="Templates\ruang-admin\js\demo\chart-bar-demo.js" />
     <Content Include="Templates\ruang-admin\js\demo\chart-pie-demo.js" />
