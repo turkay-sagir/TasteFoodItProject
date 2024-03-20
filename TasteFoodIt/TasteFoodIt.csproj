@@ -411,6 +411,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ProjectImages\images\TasteFood_Database.jpg" />
+    <Content Include="ProjectImages\videos\Admin_Tarafi.mp4" />
+    <Content Include="ProjectImages\videos\Rezervasyon_Islemi.mp4" />
+    <Content Include="ProjectImages\videos\Website_Tarafi.mp4" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
